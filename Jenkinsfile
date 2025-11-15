@@ -5,14 +5,14 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image..."
-                sh 'docker build -t flask-app-ci .'
+                powershell 'docker build -t flask-app-ci .'
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
                 echo "Deploying to Kubernetes..."
-                sh '''
+                powershell '''
                     kubectl apply -f kubernetes/deployment.yaml
                     kubectl apply -f kubernetes/service.yaml
                 '''
@@ -22,7 +22,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 echo "Verifying Kubernetes deployment..."
-                sh '''
+                powershell '''
                     kubectl rollout status deployment/flask-app
                     kubectl get pods
                     kubectl get services
