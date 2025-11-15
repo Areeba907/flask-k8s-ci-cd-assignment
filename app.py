@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, World!"
+    return "Hello, World! This is Flask CI/CD with Kubernetes!"
 
 
 if __name__ == "__main__":
