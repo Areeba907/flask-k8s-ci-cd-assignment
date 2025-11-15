@@ -3,7 +3,12 @@ kind: Deployment
 metadata:
   name: flask-app
 spec:
-  replicas: 1
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: flask-app
@@ -14,6 +19,14 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: flask-app:latest
+          image: flask-app-ci:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
