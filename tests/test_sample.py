@@ -1,8 +1,9 @@
 import sys
 import os
 
-# Add repo root to PYTHONPATH
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Must come BEFORE any other imports that depend on PYTHONPATH
+repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(repo_root)
 
 from app import home
 
