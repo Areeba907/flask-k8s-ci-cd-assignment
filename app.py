@@ -1,12 +1,11 @@
 from flask import Flask
 
-
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return "Hello, World! This is Flask CI/CD with Kubernetes!"
+    return "Hello, World!"
 
 
 if __name__ == "__main__":
