@@ -1,11 +1,11 @@
-import sys
 import os
+import sys
 
-# Must come BEFORE any other imports that depend on PYTHONPATH
+# Add project root to Python path BEFORE importing app
 repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(repo_root)
+sys.path.insert(0, repo_root)
 
-from app import home
+from app import home   # <-- MUST be after sys.path modification
 
 
 def test_home():
